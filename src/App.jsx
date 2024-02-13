@@ -1,16 +1,21 @@
 
-import './App.css'
+import { Outlet, useLocation } from "react-router-dom";
+import Header from "./components/layouts/Header/Header";
+import Footer from "./components/layouts/Footer/Footer";
 
 function App() {
-  
 
+const location=useLocation()
+const isAdmin = location.pathname.startsWith("/admin");
   return (
     <>
-      <h1>
-        Hello Vite + React!
-      </h1>
+      {!isAdmin?<Header/>:null}
+      <Outlet />
+     {!isAdmin?<Footer/>:null
+     
+      }
     </>
-  )
+  );
 }
 
-export default App
+export default App;

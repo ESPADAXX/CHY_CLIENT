@@ -1,10 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
+import Router from "./config/routes.jsx";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+import { ThemeProvider } from "@material-tailwind/react";
+import { Provider } from "react-redux";
+import store from "./redux/store/store.js";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <ThemeProvider>
+      <Provider  store={store}>
+        <RouterProvider router={Router} />
+      </Provider>
+    </ThemeProvider>
+  </React.StrictMode>
+);
